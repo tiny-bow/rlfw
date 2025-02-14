@@ -281,3 +281,11 @@ test "glfw vulkan" {
         }
     }
 }
+
+test "glfw allocator" {
+    const alloc = std.testing.allocator;
+    glfw.initAllocator(&alloc);
+    try glfw.init(.{});
+    defer glfw.deinit();
+    glfw.initAllocator(null);
+}

@@ -18,6 +18,7 @@ pub const Cursor = @import("Cursor.zig");
 pub const Joystick = @import("Joystick.zig");
 pub const GammaRamp = @import("GammaRamp.zig");
 pub const Image = @import("Image.zig");
+pub const initAllocator = @import("allocator.zig").initAllocator;
 /// This function should not be used directly
 ///
 /// Checks the glfw error buffer and returns the appropriate zig error
