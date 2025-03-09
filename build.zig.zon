@@ -1,6 +1,7 @@
 .{
-    .name = "zlfw",
+    .name = .zlfw,
     .version = "0.0.1",
+    .fingerprint = 0x99cd851ed1a84cc6,
     .paths = .{
         "zig/",
         "build.zig",
@@ -8,7 +9,8 @@
     },
     .dependencies = .{
         .glfw = .{
-            .path = "../glfw",
+            .url = "https://github.com/Batres3/glfw/archive/8f6ec25421ab82b6b154172037c0d6a608712be5.zip",
+            .hash = "glfw-0.0.0-R5AeUkIhGgDQ_PdQBjyf6nKh8xoIC5-JZRT29uFwVX2u",
         },
     },
 }
