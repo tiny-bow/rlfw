@@ -1,0 +1,14 @@
+.{
+    .name = "zlfw",
+    .version = "0.0.1",
+    .paths = .{
+        "zig/",
+        "build.zig",
+        "build.zig.zon",
+    },
+    .dependencies = .{
+        .glfw = .{
+            .path = "../glfw",
+        },
+    },
+}

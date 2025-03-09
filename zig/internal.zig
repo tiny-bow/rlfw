@@ -4,9 +4,9 @@ const builtin = @import("builtin");
 pub const c = @cImport({
     if (glfw.build_options.vulkan)
         @cDefine("GLFW_INCLUDE_VULKAN", "");
-    @cInclude("glfw3.h");
+    @cInclude("GLFW/glfw3.h");
 });
-pub const _c = @cImport(@cInclude("../../src/internal.h"));
+pub const _c = @cImport(@cInclude("GLFW/internal.h"));
 pub const glfw = @import("module.zig");
 pub const err = @import("error.zig");
 pub const Error = err.Error;
