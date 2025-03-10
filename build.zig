@@ -19,7 +19,7 @@ pub fn build(b: *std.Build) void {
 
     // Add module
     const mod = b.addModule("zlfw", .{
-        .root_source_file = b.path("zig/module.zig"),
+        .root_source_file = b.path("src/module.zig"),
         .target = target,
         .optimize = optimize,
     });
@@ -28,7 +28,7 @@ pub fn build(b: *std.Build) void {
 
     // Tests
     const tests = b.addTest(.{
-        .root_source_file = b.path("zig/test.zig"),
+        .root_source_file = b.path("src/test.zig"),
         .target = target,
         .optimize = optimize,
     });
