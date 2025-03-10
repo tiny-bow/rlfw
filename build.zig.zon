@@ -10,7 +10,7 @@
     .dependencies = .{
         .glfw = .{
             .url = "https://github.com/Batres3/glfw/archive/refs/heads/master.tar.gz",
-            .hash = "glfw-0.0.0-R5AeUkIhGgDQ_PdQBjyf6nKh8xoIC5-JZRT29uFwVX2u",
+            .hash = "glfw-0.0.0-R5AeUm0HGgA_Rlrr9HR91ejkGd-K_JyCjkXz_U3b-jp9",
         },
     },
 }
