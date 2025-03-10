@@ -3,9 +3,10 @@
     .version = "0.0.1",
     .fingerprint = 0x99cd851ed1a84cc6,
     .paths = .{
-        "zig/",
+        "src/",
         "build.zig",
         "build.zig.zon",
+        "LICENSE",
     },
     .dependencies = .{
         .glfw = .{
