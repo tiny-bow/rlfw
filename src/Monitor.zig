@@ -6,7 +6,6 @@ const _c = internal._c;
 const glfw = internal.glfw;
 const Size = glfw.Size;
 const Error = internal.Error;
-const errorCheck = glfw.errorCheck;
 const Monitor = @This();
 const requireInit = internal.requireInit;
 

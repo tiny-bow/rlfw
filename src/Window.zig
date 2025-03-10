@@ -11,7 +11,6 @@ const Error = glfw.Error;
 const Window = @This();
 const Cursor = @import("Cursor.zig");
 const Monitor = @import("Monitor.zig");
-const errorCheck = glfw.errorCheck;
 const requireInit = internal.requireInit;
 
 handle: *_c._GLFWwindow = undefined,
@@ -160,7 +159,7 @@ pub fn init(width: u32, height: u32, title: [:0]const u8, monitor: ?Monitor, sha
 pub fn deinit(self: Window) void {
     requireInit();
     c.glfwDestroyWindow(@ptrCast(self.handle));
-    internal.errorCheck();
+    internal.errorCheck(); // PlatformError
 }
 
 /// Checks the close flag of the specified window.
@@ -812,7 +811,7 @@ pub fn getAttrib(self: Window, attrib: Attrib) Error!c_int {
 /// @thread_safety This function must only be called from the main thread.
 pub fn setAttrib(self: Window, attrib: Attrib, value: c_int) Error!void {
     c.glfwSetWindowAttrib(@ptrCast(self.handle), @intFromEnum(attrib), value);
-    try errorCheck();
+    try glfw.errorCheck();
 }
 
 /// Returns a Zig GLFW window from an underlying C GLFW window handle.

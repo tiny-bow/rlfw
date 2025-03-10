@@ -10,6 +10,8 @@ pub fn build(b: *std.Build) void {
     const options = b.addOptions();
     const vulkan = b.option(bool, "vulkan", "Include the vulkan header and associated files") orelse false;
     options.addOption(bool, "vulkan", vulkan);
+    const error_check = b.option(bool, "error_check", "Have Zig handle errors for you") orelse true;
+    options.addOption(bool, "error_check", error_check);
 
     const glfw = b.dependency("glfw", .{
         .target = target,

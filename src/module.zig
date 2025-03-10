@@ -4,7 +4,6 @@ const _c = internal._c;
 pub const build_options = @import("glfw_options");
 pub const c = internal.c;
 pub const Input = @import("input.zig");
-pub const Hint = @import("hint.zig");
 pub const Error = @import("error.zig").Error;
 
 // Constants

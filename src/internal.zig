@@ -14,9 +14,9 @@ pub const Error = err.Error;
 /// this is useful in case someone terminates the glfw context before freeing relevant structs,
 /// which would lead to undefined behavior, these types of errors are common when developing
 /// but almost impossible to get in any developed application, much less in an application
-/// packcaged in release, therefore, we only do the check in debug mode
+/// packaged in release, therefore, we only do the check in debug mode
 pub fn errorCheck() void {
-    if (builtin.mode == .Debug or builtin.mode == .ReleaseSafe) {
+    if (builtin.mode == .Debug and glfw.build_options.error_check) {
         var description: [*c]const u8 = undefined;
         if (err.toZigError(c.glfwGetError(&description))) |e| {
             const desc: [*:0]const u8 = @ptrCast(description);
@@ -26,7 +26,7 @@ pub fn errorCheck() void {
 }
 
 pub fn requireInit() void {
-    if (builtin.mode == .Debug or builtin.mode == .ReleaseSafe) {
+    if (builtin.mode == .Debug and glfw.build_options.error_check) {
         if (_c._glfw.initialized == 0)
             std.debug.panic("glfw function was called without initializing context", .{});
     }
