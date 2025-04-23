@@ -20,7 +20,7 @@ pub fn build(b: *std.Build) void {
     });
 
     // Add module
-    const mod = b.addModule("zlfw", .{
+    const mod = b.addModule("rlfw", .{
         .root_source_file = b.path("src/module.zig"),
         .target = target,
         .optimize = optimize,
@@ -34,7 +34,7 @@ pub fn build(b: *std.Build) void {
         .target = target,
         .optimize = optimize,
     });
-    tests.root_module.addImport("zlfw", mod);
+    tests.root_module.addImport("rlfw", mod);
     tests.root_module.addOptions("build_options", options);
     tests.linkLibrary(glfw.artifact("glfw"));
     b.step("test", "Run glfw tests").dependOn(&b.addRunArtifact(tests).step);

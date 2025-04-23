@@ -1,5 +1,5 @@
 const std = @import("std");
-const glfw = @import("zlfw");
+const glfw = @import("rlfw");
 const expect = std.testing.expect;
 const allocator = std.testing.allocator;
 

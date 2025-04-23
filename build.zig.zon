@@ -1,7 +1,7 @@
 .{
-    .name = .zlfw,
+    .name = .rlfw,
     .version = "0.0.1",
-    .fingerprint = 0x99cd851ed1a84cc6,
+    .fingerprint = 0x5c79adf11b4ff542,
     .paths = .{
         "src/",
         "build.zig",
