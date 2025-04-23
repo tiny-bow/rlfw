@@ -181,7 +181,7 @@ pub fn shouldClose(self: Window) bool {
 /// synchronized.
 pub fn close(self: Window, value: bool) void {
     requireInit();
-    self.handle.shouldClose = value;
+    self.handle.shouldClose = @intFromBool(value);
 }
 
 /// This function gets the window title, encoded as UTF-8, of the specified window.
@@ -1595,10 +1595,10 @@ pub inline fn setDropCallback(self: Window, comptime callback: ?fn (window: Wind
 
 pub fn swapBuffers(self: Window) !void {
     requireInit();
-    if (self.handle.context.client == @intFromEnum(glfw.Hint.Context.API.Client.Value.NoAPI))
+    if (self.handle.context.client == @intFromEnum(glfw.Window.Hints.Context.ClientAPI.none))
         return Error.NoWindowContext;
 
-    self.handle.context.swapBuffers(self.handle);
+    self.handle.context.swapBuffers.?(self.handle);
 }
 //
 // Hints
