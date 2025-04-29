@@ -122,7 +122,12 @@ const SubError = error{ PlatformError, InvalidValue };
 /// If the requested shape is not available, this function emits a CursorUnavailable error
 ///
 /// @thread_safety: This function must only be called from the main thread.
-pub fn initStandard(shape: Shape) SubError!?Cursor {
+pub fn initStandard(shape: anytype) SubError!?Cursor {
+    const T = @TypeOf(shape);
+    if (comptime T != Shape and T != Shape.Resize) {
+        @compileError("Invalid cursor shape");
+    }
+
     requireInit();
     var cursor: Cursor = .{ .handle = @ptrCast(@alignCast(_c._glfw_calloc(1, @sizeOf(_c._GLFWcursor)).?)) };
     cursor.handle.next = _c._glfw.cursorListHead;
