@@ -237,7 +237,7 @@ pub fn setTitle(self: Window, title: [:0]const u8) !void {
 const IFPError = error{ InvalidValue, FeatureUnavailable, PlatformError };
 pub fn setIcon(self: Window, images: []const c.GLFWimage) IFPError!void {
     requireInit();
-    c.glfwSetWindowIcon(@ptrCast(self.handle), images.len, images);
+    c.glfwSetWindowIcon(@ptrCast(self.handle), @intCast(images.len), images.ptr);
     try internal.subErrorCheck(IFPError);
 }
 
@@ -1360,7 +1360,6 @@ pub inline fn setKeyCallback(self: Window, comptime callback: ?fn (window: Windo
                     @as(input.Key, @enumFromInt(key)),
                     @as(i32, @intCast(scancode)),
                     @as(input.Action, @enumFromInt(action)),
-                    @as(input.Modifier, @enumFromInt(mods)),
                     input.Modifier.fromInt(mods),
                 });
             }
@@ -1438,7 +1437,7 @@ pub inline fn setMouseButtonCallback(self: Window, comptime callback: ?fn (windo
             pub fn mouseButtonCallbackWrapper(handle: ?*c.GLFWwindow, button: c_int, action: c_int, mods: c_int) callconv(.C) void {
                 @call(.always_inline, user_callback, .{
                     from(handle.?),
-                    @as(input.MouseButton, @enumFromInt(button)),
+                    @as(input.Mouse, @enumFromInt(button)),
                     @as(input.Action, @enumFromInt(action)),
                     input.Modifier.fromInt(mods),
                 });
